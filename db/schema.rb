@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922233409) do
+ActiveRecord::Schema.define(version: 20150922234224) do
+
+  create_table "notes", force: :cascade do |t|
+    t.integer  "todo_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "notes", ["todo_id"], name: "index_notes_on_todo_id"
 
   create_table "todos", force: :cascade do |t|
     t.string   "description"
     t.datetime "due"
-    t.text     "note"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
