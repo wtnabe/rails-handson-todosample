@@ -12,7 +12,7 @@
 
 <p>
   <strong>Note:</strong>
-  <%= @todo.note %>
+  <%= @todo.notes.map {|e| e.body}.join(', ') %>
 </p>
 
 <%= link_to 'Edit', edit_todo_path(@todo) %> |

@@ -20,8 +20,10 @@
     <%= f.datetime_select :due %>
   </div>
   <div class="field">
-    <%= f.label :note %><br>
-    <%= f.text_area :note %>
+    <%= f.label :notes %><br>
+    <%= f.fields_for :notes do |note_fields| -%>
+      <%= note_fields.text_field :body %>
+    <% end -%><%= if @todo.created_at? then link_to('New Note', new_note_path(todo_id: @todo.id)) end %>
   </div>
   <div class="actions">
     <%= f.submit %>

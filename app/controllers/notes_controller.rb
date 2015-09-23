@@ -15,6 +15,7 @@ class NotesController < ApplicationController
   # GET /notes/new
   def new
     @note = Note.new
+    @note.todo_id = params[:todo_id] if Note.find(params[:todo_id].to_i)
   end
 
   # GET /notes/1/edit
